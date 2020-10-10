@@ -2,6 +2,21 @@
 
 {% block body %}
     <h2>Categories</h2>
-
-    TODO
+    <ul>
+        {% for category in categories %}
+        <li>
+             <a href="{%url 'index' category.name %}">
+                 {{ category }}
+            </a>
+        </li>
+        {%empty%}
+        <li>No Categories</li>
+        {% endfor %}
+    </ul>
+    <h3>Add category</h3>
+    <form action="{% url 'categories' %}" method="post">
+    <input type="text">
+    {% csrf_token %}
+     <input type="submit" value="add"> 
+     </form>
 {% endblock %}

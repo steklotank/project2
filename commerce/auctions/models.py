@@ -18,6 +18,7 @@ class Item(models.Model):
     bet_id = models.ForeignKey(Bet, on_delete=models.PROTECT, related_name='+')
     category = models.ManyToManyField('Category')
     is_active = models.BooleanField(default="True")
+    description = models.CharField(max_length=4096, default=None)
 
 class Comment(models.Model):
     author = models.ManyToManyField(User)
