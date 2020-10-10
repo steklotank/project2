@@ -62,12 +62,14 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-def watchlist():
-    pass
+def watchlist(request):
+    return render(request, "auctions/watchlist.html")
 
-def create_listing():
-    pass
+def create_listing(request):
+    return render(request, "auctions/create_listing.html")
 
-def categories():
-    pass
+def categories(request):
+    return render(request, "auctions/category.html")
 
+def item(request):
+    return render(request, "auctions/item.html")
