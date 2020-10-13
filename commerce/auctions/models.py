@@ -26,7 +26,10 @@ class Comment(models.Model):
     create_time = models.TimeField( auto_now_add=True)
 
 class Category(models.Model):
-    name = models.CharField(max_length=64)
+    category_name = models.CharField(max_length=64)
+    
+    def __str__(self):
+        return F"{self.category_name}"
 
 class Watchlist(models.Model):
     item = models.ManyToManyField(Item)

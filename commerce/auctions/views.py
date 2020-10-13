@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
-
+from django.contrib.auth.decorators import login_required
 from .models import User, Category, Item, Comment, Watchlist, Bet
 
 
@@ -63,18 +63,29 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
+@login_required
 def watchlist(request):
     return render(request, "auctions/watchlist.html")
 
+@login_required
 def create_listing(request):
     return render(request, "auctions/create_listing.html")
 
+@login_required
 def categories(request):
     if request.method == "POST":
-        pass
-    return render(request, "auctions/category.html",{
-        "categories": Category.objects.all(),
-    })
+       form_category = request.POST.get('category', '')
+       category_obj = Category(category_name = form_category)
+       category_obj.save()
+       return  redirect('categories')
+    else:
+        return render(request, "auctions/category.html",{
+            "categories": Category.objects.all(),
+            })
+
+def filter(requst):
+    pass
+
 
 def item(request):
     return render(request, "auctions/item.html")

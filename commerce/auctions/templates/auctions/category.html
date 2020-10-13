@@ -5,7 +5,7 @@
     <ul>
         {% for category in categories %}
         <li>
-             <a href="{%url 'index' category.name %}">
+             <a href="{%url 'filter'%}/{{category}}">
                  {{ category }}
             </a>
         </li>
@@ -15,7 +15,7 @@
     </ul>
     <h3>Add category</h3>
     <form action="{% url 'categories' %}" method="post">
-    <input type="text">
+    <input type="text" name="category">
     {% csrf_token %}
      <input type="submit" value="add"> 
      </form>
