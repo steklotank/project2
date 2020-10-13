@@ -3,5 +3,23 @@
 {% block body %}
     <h2>Create listing</h2>
 
-    TODO
+ <form action="{% url 'create-listing' %}" method="post">
+  {% csrf_token %}
+ <input type="text" name="photo" placeholder="photo link">
+ <br>
+        <select name="passenger">
+                 {% for category in categories %}
+                <option value="{{category.id}}">{{ category }}<option>
+                {%empty%}
+                 <option value="No Categories"> No Categories <option>
+               {% endfor %}
+         
+     </select> 
+<p><textarea rows="10" cols="45" name="text" placeholder="decsribe your good"></textarea></p>
+
+<br>
+ <input type="submit" value="create"> 
+ </form>
+
+
 {% endblock %}

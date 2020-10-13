@@ -71,7 +71,7 @@ def watchlist(request):
 def create_listing(request):
     return render(request, "auctions/create_listing.html")
 
-@login_required
+
 def categories(request):
     if request.method == "POST":
        form_category = request.POST.get('category', '')
