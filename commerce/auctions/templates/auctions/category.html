@@ -2,6 +2,7 @@
 
 {% block body %}
     <h2>Categories</h2>
+    
     <ul>
         {% for category in categories %}
         <li>
@@ -13,6 +14,7 @@
         <li>No Categories</li>
         {% endfor %}
     </ul>
+
     <h3>Add category</h3>
     <form action="{% url 'categories' %}" method="post">
     <input type="text" name="category">

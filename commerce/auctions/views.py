@@ -69,7 +69,11 @@ def watchlist(request):
 
 @login_required
 def create_listing(request):
-    return render(request, "auctions/create_listing.html")
+    
+    return render(request, "auctions/create_listing.html",{
+        "categories": Category.objects.all(),
+    })
+
 
 
 def categories(request):
